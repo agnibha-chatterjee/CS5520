@@ -88,6 +88,15 @@
                             <constraint firstItem="62Y-mO-cQB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r91-E3-Yza"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnAdd" destination="Pbd-Mu-OmX" id="6o2-Pu-5L6"/>
+                        <outlet property="btnDivide" destination="MOT-t5-FYS" id="8Ru-Uw-nFM"/>
+                        <outlet property="btnMultiply" destination="62Y-mO-cQB" id="oyv-K8-1Qy"/>
+                        <outlet property="btnSubract" destination="MjG-e9-1Wl" id="dS5-RS-vvt"/>
+                        <outlet property="firstNumberTextField" destination="ugh-HS-Q2e" id="9v0-Cb-Z0C"/>
+                        <outlet property="resultLabel" destination="lZT-hd-0Pe" id="oqj-qc-cCX"/>
+                        <outlet property="secondNumberTextField" destination="TpV-FV-Vj7" id="TW8-p6-cQs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
