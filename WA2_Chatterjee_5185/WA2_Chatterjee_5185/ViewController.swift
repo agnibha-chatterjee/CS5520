@@ -110,7 +110,7 @@ class ViewController: UIViewController {
             return
         }
            
-        resultLabel.text = String(result!)
+        resultLabel.text = String(format: "%.2f", result!)
     }
 
     
