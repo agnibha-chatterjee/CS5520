@@ -6,10 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		F02680A32CA530A1000E850B /* CreateProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02680A22CA530A1000E850B /* CreateProfileScreen.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		F02680852CA53022000E850B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -31,7 +27,6 @@
 		F026806E2CA53021000E850B /* WA3_Chatterjee_5185.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WA3_Chatterjee_5185.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F02680842CA53022000E850B /* WA3_Chatterjee_5185Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WA3_Chatterjee_5185Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F026808E2CA53022000E850B /* WA3_Chatterjee_5185UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WA3_Chatterjee_5185UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F02680A22CA530A1000E850B /* CreateProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -93,7 +88,6 @@
 		F02680652CA53021000E850B = {
 			isa = PBXGroup;
 			children = (
-				F02680A22CA530A1000E850B /* CreateProfileScreen.swift */,
 				F02680702CA53021000E850B /* WA3_Chatterjee_5185 */,
 				F02680872CA53022000E850B /* WA3_Chatterjee_5185Tests */,
 				F02680912CA53022000E850B /* WA3_Chatterjee_5185UITests */,
@@ -255,7 +249,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F02680A32CA530A1000E850B /* CreateProfileScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

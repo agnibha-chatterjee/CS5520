@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CreateProfileViewController: UIViewController {
     
-    let createProfileScreen = CreateProfileScreen()
+    let createProfileScreen = CreateProfileView()
 
     let phoneTypes = ["Cell", "Home", "Work"]
     var selectedPhoneType = "Cell"
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+extension CreateProfileViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -48,28 +48,3 @@ extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 }
 
-//  class ViewController: UIViewController {
-    
-//     //codes omitted...
-
-// }
-
-// //MARK: implementing mood PickerView...
-// extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource{
-//     //returns the number of columns/components in the Picker View...
-//     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//         return 1
-//     }
-    
-//     //returns the number of rows in the current component...
-//     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//         return moods.count
-//     }
-    
-//     //set the title of currently picked row...
-//     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//         // on change selection, update selectedMood...
-//         selectedMood = moods[row]
-//         return moods[row]
-//     }
-// }

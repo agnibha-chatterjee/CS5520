@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateProfileScreen: UIView {
+class CreateProfileView: UIView {
 
     var titleLabel: UILabel!
     var nameField: UITextField!
