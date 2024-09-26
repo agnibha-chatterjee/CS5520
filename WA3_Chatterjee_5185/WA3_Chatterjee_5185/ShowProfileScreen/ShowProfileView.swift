@@ -7,14 +7,41 @@
 
 import UIKit
 
-class ShowProfileScreen: UIView {
+class ShowProfileView: UIView {
+    
+    private let nameLabel = UILabel()
+    private let emailLabel = UILabel()
+    private let phoneLabel = UILabel()
+    private let addressLabel = UILabel()
+    private let cityStateLabel = UILabel()
+    private let zipLabel = UILabel()
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.backgroundColor = .white
+        
+        setupLabels()
     }
-    */
 
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
+    private func setupLabels() {
+        let labels = [nameLabel, emailLabel, phoneLabel, addressLabel, cityStateLabel, zipLabel]
+        let titles = ["Name:", "Email:", "Phone:", "Address:", "", "ZIP:"]
+        
+        for (index, label) in labels.enumerated() {
+            label.text = titles[index]
+            label.translatesAutoresizingMaskIntoConstraints = false
+            self.addSubview(label)
+        
+            
+            NSLayoutConstraint.activate([
+                label.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+                label.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: CGFloat(20 + index * 30))
+            ])
+        }
+    }
 }

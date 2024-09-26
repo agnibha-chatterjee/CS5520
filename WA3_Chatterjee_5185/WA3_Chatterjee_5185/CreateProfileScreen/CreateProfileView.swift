@@ -8,8 +8,7 @@
 import UIKit
 
 class CreateProfileView: UIView {
-
-    var titleLabel: UILabel!
+ 
     var nameField: UITextField!
     var emailField: UITextField!
     var addPhoneLabel: UILabel!
@@ -23,10 +22,9 @@ class CreateProfileView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+    
         self.backgroundColor = .white
         
-        setupTitleLabel()
         setupNameField()
         setupEmailField()
         setupAddPhoneLabel()
@@ -38,14 +36,6 @@ class CreateProfileView: UIView {
         setupZipField()
         setupShowProfileButton()
         initConstraints()
-    }
-    
-    func setupTitleLabel() {
-        titleLabel = UILabel()
-        titleLabel.text = "Create Profile"
-        titleLabel.font = titleLabel.font.withSize(26)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(titleLabel)
     }
     
     func setupNameField() {
@@ -132,10 +122,8 @@ class CreateProfileView: UIView {
     
     func initConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),
-            titleLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-
-            nameField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+        
+            nameField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),
             nameField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             nameField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -24),
 
@@ -143,15 +131,15 @@ class CreateProfileView: UIView {
             emailField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             emailField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -24),
 
-            addPhoneLabel.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 16),
+            addPhoneLabel.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 32),
             addPhoneLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
 
-            selectTypeLabel.topAnchor.constraint(equalTo: addPhoneLabel.bottomAnchor, constant: 16),
+            selectTypeLabel.topAnchor.constraint(equalTo: addPhoneLabel.bottomAnchor, constant: 8),
             selectTypeLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
 
-            phoneTypePicker.topAnchor.constraint(equalTo: selectTypeLabel.bottomAnchor, constant: 0),
+            phoneTypePicker.topAnchor.constraint(equalTo: selectTypeLabel.bottomAnchor, constant: -8),
             phoneTypePicker.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            phoneTypePicker.heightAnchor.constraint(equalToConstant: 120),
+            phoneTypePicker.heightAnchor.constraint(equalToConstant: 80),
 
             phoneNumberField.topAnchor.constraint(equalTo: phoneTypePicker.bottomAnchor, constant: 16),
             phoneNumberField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),

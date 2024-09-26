@@ -9,26 +9,33 @@ import UIKit
 
 class CreateProfileViewController: UIViewController {
     
-    let createProfileScreen = CreateProfileView()
+    let createProfileView = CreateProfileView()
 
     let phoneTypes = ["Cell", "Home", "Work"]
     var selectedPhoneType = "Cell"
     
     override func loadView() {
-        view = createProfileScreen
+        view = createProfileView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createProfileScreen.phoneTypePicker.delegate = self
-        createProfileScreen.phoneTypePicker.dataSource = self
+        title = "Create Profile"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 26)]
+        navigationController?.navigationBar.setTitleVerticalPositionAdjustment(16, for: .default)
+
         
-        createProfileScreen.showProfileButton.addTarget(self, action: #selector(handleShowProfilePress), for: .touchUpInside)
+        createProfileView.phoneTypePicker.delegate = self
+        createProfileView.phoneTypePicker.dataSource = self
+        
+        createProfileView.showProfileButton.addTarget(self, action: #selector(handleShowProfilePress), for: .touchUpInside)
     }
     
     @objc func handleShowProfilePress() {
-        print("Agni")
+        let showProfileViewController = ShowProfileViewController()
+        navigationController?.pushViewController(showProfileViewController, animated: true)
+        print("Navigated")
     }
 
 }
