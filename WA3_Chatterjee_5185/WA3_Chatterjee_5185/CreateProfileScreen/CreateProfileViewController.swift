@@ -128,6 +128,9 @@ class CreateProfileViewController: UIViewController {
         } else if createProfileView.zipField.text?.count != 5 {
             showAlert(message: "Zip code must be exactly 5 digits long")
             return false
+        } else if let zip = Int(createProfileView.zipField.text!), zip < 1 || zip > 99950 {
+            showAlert(message: "Invalid Zip code! Zip code must be between 00001 and 99950")
+            return false
         }
         return true
     }
