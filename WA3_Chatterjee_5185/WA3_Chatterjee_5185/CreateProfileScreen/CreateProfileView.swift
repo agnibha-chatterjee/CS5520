@@ -139,7 +139,7 @@ class CreateProfileView: UIView {
 
             phoneTypePicker.topAnchor.constraint(equalTo: selectTypeLabel.bottomAnchor, constant: -8),
             phoneTypePicker.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-            phoneTypePicker.heightAnchor.constraint(equalToConstant: 80),
+            // phoneTypePicker.heightAnchor.constraint(equalToConstant: 80),
 
             phoneNumberField.topAnchor.constraint(equalTo: phoneTypePicker.bottomAnchor, constant: 16),
             phoneNumberField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
