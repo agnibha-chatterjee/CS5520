@@ -47,7 +47,7 @@ class ShowProfileView: UIView {
             label!.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(label!)
             
-            let topMargin: Int = index == 0 ? 32 : 16
+            let topMargin: Int = 32 + (index * 40)
             
             NSLayoutConstraint.activate([
                 label!.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: CGFloat(topMargin)),
@@ -63,7 +63,7 @@ class ShowProfileView: UIView {
         self.addSubview(phoneTypeImage)
 
         NSLayoutConstraint.activate([
-            phoneTypeImage.topAnchor.constraint(equalTo: zipLabel.bottomAnchor, constant: 16),
+            phoneTypeImage.topAnchor.constraint(equalTo: zipLabel.bottomAnchor, constant: 32),
             phoneTypeImage.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
         ])
     }

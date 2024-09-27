@@ -157,7 +157,7 @@ class CreateProfileView: UIView {
             zipField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             zipField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -24),
 
-            showProfileButton.topAnchor.constraint(equalTo: zipField.bottomAnchor, constant: 64),
+            showProfileButton.topAnchor.constraint(equalTo: zipField.bottomAnchor, constant: 32),
             showProfileButton.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
 
         ])
