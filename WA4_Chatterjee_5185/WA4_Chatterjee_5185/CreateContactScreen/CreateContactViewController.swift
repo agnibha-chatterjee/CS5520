@@ -12,7 +12,7 @@ class CreateContactViewController: UIViewController {
     
     let createContactView = CreateContactView()
     
-    let phoneTypes = ["Cell", "Home", "Work"]
+    let phoneTypes = ["Cell", "Work", "Home"]
     var selectedPhoneType = "Cell"
     
     var delegate: MainScreenViewController!
