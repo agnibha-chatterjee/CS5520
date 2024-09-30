@@ -24,12 +24,12 @@ class DisplayContactViewController: UIViewController {
     }
 
     func displayProfileData() {
-        displayProfileView.nameLabel.text! += " \(contact!.name)"
+        displayProfileView.nameLabel.text! = " \(contact!.name)"
         displayProfileView.emailLabel.text! += " \(contact!.email)"
         displayProfileView.phoneLabel.text! += " \(contact!.phoneNumber) (\(contact!.phoneType))"
-        displayProfileView.addressLabel.text! += " \(contact!.address)"
-        displayProfileView.cityStateLabel.text! += contact!.cityState
-        displayProfileView.zipLabel.text! += " \(contact!.zip)"
+        displayProfileView.addressLabel.text! = " \(contact!.address)"
+        displayProfileView.cityStateLabel.text! = contact!.cityState
+        displayProfileView.zipLabel.text! = " \(contact!.zip)"
     }
     
 }

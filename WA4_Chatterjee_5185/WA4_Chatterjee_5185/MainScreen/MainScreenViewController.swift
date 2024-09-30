@@ -15,6 +15,7 @@ class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "My Contacts"
+        self.navigationItem.backButtonTitle = "Back"
         self.view = mainScreenView
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
