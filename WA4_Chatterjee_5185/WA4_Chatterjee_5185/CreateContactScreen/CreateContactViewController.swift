@@ -54,7 +54,7 @@ class CreateContactViewController: UIViewController {
                                  cityState: createContactView.cityStateField.text!,
                                  zip: Int(createContactView.zipField.text!)!)
         
-        self.delegate.delegateOnAddExpense(newContact)
+        self.delegate.delegateOnAddContact(newContact)
         self.navigationController?.popViewController(animated: true)
         
     }

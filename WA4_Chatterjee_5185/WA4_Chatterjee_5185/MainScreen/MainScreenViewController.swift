@@ -24,18 +24,18 @@ class MainScreenViewController: UIViewController {
         )
         
         contacts.append(Contact(name: "Sample",
-                                        email: "sample@sample.com",
-                                        phoneType: "Cell",
-                                        phoneNumber: 1112223331,
-                                        address: "156 2nd St",
-                                        cityState: "San Francisco, CA",
-                                        zip: 92612))
+                                email: "sample@sample.com",
+                                phoneType: "Cell",
+                                phoneNumber: 1112223331,
+                                address: "156 2nd St",
+                                cityState: "San Francisco, CA",
+                                zip: 92612))
     
         mainScreenView.tableViewContacts.dataSource = self
         mainScreenView.tableViewContacts.delegate = self
     }
     
-    func delegateOnAddExpense(_ contact: Contact) {
+    func delegateOnAddContact(_ contact: Contact) {
         contacts.append(contact)
         mainScreenView.tableViewContacts.reloadData()
     }
