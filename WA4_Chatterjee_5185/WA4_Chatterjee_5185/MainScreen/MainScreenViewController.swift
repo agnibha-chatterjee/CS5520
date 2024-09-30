@@ -21,6 +21,22 @@ class MainScreenViewController: UIViewController {
             barButtonSystemItem: .add, target: self,
             action: #selector(onAddBarButtonTapped)
         )
+        
+        contacts.append(Contact(name: "Agni",
+                                        email: "agni@agni.com",
+                                        phoneType: "Cell",
+                                        phoneNumber: "9901199218",
+                                        address: "601 William St",
+                                        cityState: "Oak",
+                                        zip: "94612"))
+        
+        contacts.append(Contact(name: "Sruti",
+                                        email: "s@s.com",
+                                        phoneType: "Work",
+                                        phoneNumber: "425654221",
+                                        address: "435 William St",
+                                        cityState: "New Port",
+                                        zip: "92612"))
     
         mainScreenView.tableViewContacts.dataSource = self
         mainScreenView.tableViewContacts.delegate = self
@@ -55,6 +71,12 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedContact = self.contacts[indexPath.row]
+        let displayProfileViewController = DisplayContactViewController()
+        displayProfileViewController.contact = selectedContact
+        
+        self.navigationController?.pushViewController(displayProfileViewController, animated: true)
+    }
 }
 
