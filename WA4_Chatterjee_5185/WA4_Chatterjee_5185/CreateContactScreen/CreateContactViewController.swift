@@ -15,6 +15,8 @@ class CreateContactViewController: UIViewController {
     let phoneTypes = ["Cell", "Home", "Work"]
     var selectedPhoneType = "Cell"
     
+    var delegate: MainScreenViewController!
+    
     override func loadView() {
         view = createContactView
     }
@@ -37,13 +39,16 @@ class CreateContactViewController: UIViewController {
         }
        
     
-        let newProfile = Contact(name: createContactView.nameField.text!,
+        let newContact = Contact(name: createContactView.nameField.text!,
                                  email: createContactView.emailField.text!,
                                  phoneType: selectedPhoneType,
                                  phoneNumber: createContactView.phoneNumberField.text!,
                                  address: createContactView.addressField.text!,
                                  cityState: createContactView.cityStateField.text!,
                                  zip: createContactView.zipField.text!)
+        
+        self.delegate.delegateOnAddExpense(newContact)
+        self.navigationController?.popViewController(animated: true)
         
     }
     

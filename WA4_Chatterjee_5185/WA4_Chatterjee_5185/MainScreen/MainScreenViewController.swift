@@ -41,8 +41,14 @@ class MainScreenViewController: UIViewController {
         mainScreenView.tableViewContacts.delegate = self
     }
     
+    func delegateOnAddExpense(_ contact: Contact) {
+        contacts.append(contact)
+        mainScreenView.tableViewContacts.reloadData()
+    }
+    
     @objc func onAddBarButtonTapped() {
         let createContactViewController = CreateContactViewController()
+        createContactViewController.delegate = self
         self.navigationController?.pushViewController(createContactViewController, animated: true)
     }
     
