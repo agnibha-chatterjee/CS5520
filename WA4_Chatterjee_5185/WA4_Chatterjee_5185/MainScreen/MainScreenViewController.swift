@@ -42,7 +42,8 @@ class MainScreenViewController: UIViewController {
     }
     
     @objc func onAddBarButtonTapped() {
-          
+        let createContactViewController = CreateContactViewController()
+        self.navigationController?.pushViewController(createContactViewController, animated: true)
     }
     
 }

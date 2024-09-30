@@ -28,12 +28,16 @@ class TableViewContactCell: UITableViewCell {
     
     func setupWrapperCellView() {
         wrapperCellView = UITableViewCell()
+        wrapperCellView.layer.borderColor = UIColor.gray.cgColor
+        wrapperCellView.layer.borderWidth = 1
+        wrapperCellView.layer.cornerRadius = 5
         wrapperCellView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(wrapperCellView)
     }
     
     func setupLabelName() {
         labelName = UILabel()
+        labelName.font = UIFont.boldSystemFont(ofSize: 16)
         labelName.translatesAutoresizingMaskIntoConstraints = false
         wrapperCellView.addSubview(labelName)
     }
@@ -50,10 +54,10 @@ class TableViewContactCell: UITableViewCell {
     
     func initConstraints() {
         NSLayoutConstraint.activate([
-            wrapperCellView.topAnchor.constraint(equalTo: self.topAnchor),
-            wrapperCellView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            wrapperCellView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            wrapperCellView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            wrapperCellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            wrapperCellView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
+            wrapperCellView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            wrapperCellView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
             
             labelName.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 4),
             labelName.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 4),
