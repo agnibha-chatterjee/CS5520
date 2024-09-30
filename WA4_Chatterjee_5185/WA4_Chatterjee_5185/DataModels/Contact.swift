@@ -11,12 +11,12 @@ struct Contact {
     var name: String
     var email: String
     var phoneType: String
-    var phoneNumber: String
+    var phoneNumber: Int
     var address: String
     var cityState: String
-    var zip: String
+    var zip: Int
 
-    init(name: String, email: String, phoneType: String, phoneNumber: String, address: String, cityState: String, zip: String) {
+    init(name: String, email: String, phoneType: String, phoneNumber: Int, address: String, cityState: String, zip: Int) {
         self.name = name
         self.email = email
         self.phoneType = phoneType

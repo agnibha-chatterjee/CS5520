@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainScreenViewController.swift
 //  WA4_Chatterjee_5185
 //
 //  Created by agni on 9/29/24.
@@ -23,21 +23,13 @@ class MainScreenViewController: UIViewController {
             action: #selector(onAddBarButtonTapped)
         )
         
-        contacts.append(Contact(name: "Agni",
-                                        email: "agni@agni.com",
+        contacts.append(Contact(name: "Sample",
+                                        email: "sample@sample.com",
                                         phoneType: "Cell",
-                                        phoneNumber: "9901199218",
-                                        address: "601 William St",
-                                        cityState: "Oak",
-                                        zip: "94612"))
-        
-        contacts.append(Contact(name: "Sruti",
-                                        email: "s@s.com",
-                                        phoneType: "Work",
-                                        phoneNumber: "425654221",
-                                        address: "435 William St",
-                                        cityState: "New Port",
-                                        zip: "92612"))
+                                        phoneNumber: 1112223331,
+                                        address: "156 2nd St",
+                                        cityState: "San Francisco, CA",
+                                        zip: 92612))
     
         mainScreenView.tableViewContacts.dataSource = self
         mainScreenView.tableViewContacts.delegate = self

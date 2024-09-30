@@ -19,6 +19,13 @@ class CreateContactViewController: UIViewController {
     
     override func loadView() {
         view = createContactView
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
+        tapRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    @objc func hideKeyboardOnTap(){
+        view.endEditing(true)
     }
     
     override func viewDidLoad() {
@@ -42,10 +49,10 @@ class CreateContactViewController: UIViewController {
         let newContact = Contact(name: createContactView.nameField.text!,
                                  email: createContactView.emailField.text!,
                                  phoneType: selectedPhoneType,
-                                 phoneNumber: createContactView.phoneNumberField.text!,
+                                 phoneNumber: Int(createContactView.phoneNumberField.text!)!,
                                  address: createContactView.addressField.text!,
                                  cityState: createContactView.cityStateField.text!,
-                                 zip: createContactView.zipField.text!)
+                                 zip: Int(createContactView.zipField.text!)!)
         
         self.delegate.delegateOnAddExpense(newContact)
         self.navigationController?.popViewController(animated: true)
