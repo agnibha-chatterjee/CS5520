@@ -8,7 +8,8 @@
 import UIKit
 
 class CreateContactView: UIView {
- 
+    
+    var titleLabel: UILabel!
     var nameField: UITextField!
     var emailField: UITextField!
     var addPhoneLabel: UILabel!
@@ -25,6 +26,7 @@ class CreateContactView: UIView {
     
         self.backgroundColor = .white
         
+        setupTitleLabel()
         setupNameField()
         setupEmailField()
         setupAddPhoneLabel()
@@ -35,6 +37,14 @@ class CreateContactView: UIView {
         setupCityStateField()
         setupZipField()
         initConstraints()
+    }
+    
+    func setupTitleLabel() {
+        titleLabel = UILabel()
+        titleLabel.text = "Add a New Contact"
+        titleLabel.font = titleLabel.font.withSize(20)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(titleLabel)
     }
     
     func setupNameField() {
@@ -115,8 +125,10 @@ class CreateContactView: UIView {
     
     func initConstraints() {
         NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 8),
+            titleLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
         
-            nameField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),
+            nameField.topAnchor.constraint(equalTo: titleLabel.safeAreaLayoutGuide.topAnchor, constant: 32),
             nameField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             nameField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -24),
 
