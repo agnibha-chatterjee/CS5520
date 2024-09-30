@@ -13,8 +13,17 @@ class MainScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Sample title"
+        self.title = "My Contacts"
         self.view = mainScreenView
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add, target: self,
+            action: #selector(onAddBarButtonTapped)
+        )
+    }
+    
+    @objc func onAddBarButtonTapped() {
+          
     }
 
 
