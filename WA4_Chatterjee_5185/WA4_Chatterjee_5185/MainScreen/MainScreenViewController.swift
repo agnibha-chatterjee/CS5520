@@ -7,11 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainScreenViewController: UIViewController {
+    
+    let mainScreenView = MainScreenView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.title = "Sample title"
+        self.view = mainScreenView
     }
 
 
