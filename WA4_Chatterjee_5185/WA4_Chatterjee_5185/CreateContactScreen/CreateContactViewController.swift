@@ -27,11 +27,11 @@ class CreateContactViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .save, target: self,
-            action: #selector(onSavePress)
+            action: #selector(onSaveBarButtonTapped)
         )
     }
     
-    @objc func onSavePress() {
+    @objc func onSaveBarButtonTapped() {
         if !validateAllFields() {
             return
         }
