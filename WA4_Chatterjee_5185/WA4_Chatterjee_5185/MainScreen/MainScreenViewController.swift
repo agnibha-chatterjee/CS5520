@@ -33,6 +33,8 @@ class MainScreenViewController: UIViewController {
     
         mainScreenView.tableViewContacts.dataSource = self
         mainScreenView.tableViewContacts.delegate = self
+        
+        mainScreenView.tableViewContacts.separatorStyle = .none
     }
     
     func delegateOnAddContact(_ contact: Contact) {

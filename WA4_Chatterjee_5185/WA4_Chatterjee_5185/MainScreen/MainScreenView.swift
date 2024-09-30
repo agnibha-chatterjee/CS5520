@@ -22,7 +22,6 @@ class MainScreenView: UIView {
     func setupTableViewContacts() {
         tableViewContacts = UITableView()
         tableViewContacts.register(TableViewContactCell.self, forCellReuseIdentifier: "contacts")
-        tableViewContacts.separatorStyle = .none
         tableViewContacts.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(tableViewContacts)
     }
