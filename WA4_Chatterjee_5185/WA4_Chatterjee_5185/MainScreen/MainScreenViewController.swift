@@ -21,22 +21,7 @@ class MainScreenViewController: UIViewController {
             barButtonSystemItem: .add, target: self,
             action: #selector(onAddBarButtonTapped)
         )
-        
-        contacts.append(Contact(name: "Agni",
-                                email: "agni@agni.com",
-                                phoneType: "Cell",
-                                phoneNumber: "9901199218",
-                                address: "601 William St",
-                                cityState: "Oak",
-                                zip: "94612"))
-        contacts.append(Contact(name: "Sruti",
-                                email: "s@s.com",
-                                phoneType: "Work",
-                                phoneNumber: "425654221",
-                                address: "435 William St",
-                                cityState: "New Port",
-                                zip: "92612"))
-        
+    
         mainScreenView.tableViewContacts.dataSource = self
         mainScreenView.tableViewContacts.delegate = self
     }
