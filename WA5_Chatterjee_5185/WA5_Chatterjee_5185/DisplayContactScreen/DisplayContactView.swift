@@ -9,6 +9,7 @@ import UIKit
 
 class DisplayContactView: UIView {
     
+    var contactImage: UIImageView!
     var nameLabel: UILabel!
     var emailLabel: UILabel!
     var phoneLabel: UILabel!
@@ -22,6 +23,7 @@ class DisplayContactView: UIView {
         
         self.backgroundColor = .white
         
+        setupContactImage()
         setupNameLabel()
         setupEmailLabel()
         setupPhoneLabel()
@@ -29,6 +31,15 @@ class DisplayContactView: UIView {
         setupAddressInfoLabels()
         
         initConstraints()
+    }
+    
+    func setupContactImage() {
+        contactImage = UIImageView()
+        contactImage.contentMode = .scaleToFill
+        contactImage.clipsToBounds = true
+        contactImage.tintColor = .gray
+        contactImage.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(contactImage)
     }
     
     func setupNameLabel() {
@@ -63,16 +74,21 @@ class DisplayContactView: UIView {
     
     func initConstraints() {
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),
+            contactImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),
+            contactImage.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            contactImage.widthAnchor.constraint(equalToConstant: 80),
+            contactImage.heightAnchor.constraint(equalToConstant: 80),
+            
+            nameLabel.topAnchor.constraint(equalTo: self.contactImage.bottomAnchor, constant: 8),
             nameLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             
-            emailLabel.topAnchor.constraint(equalTo: self.nameLabel.topAnchor, constant: 48),
+            emailLabel.topAnchor.constraint(equalTo: self.nameLabel.bottomAnchor, constant: 24),
             emailLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             
-            phoneLabel.topAnchor.constraint(equalTo: self.emailLabel.topAnchor, constant: 24),
+            phoneLabel.topAnchor.constraint(equalTo: self.emailLabel.bottomAnchor, constant: 24),
             phoneLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             
-            addressTextLabel.topAnchor.constraint(equalTo: self.phoneLabel.topAnchor, constant: 48),
+            addressTextLabel.topAnchor.constraint(equalTo: self.phoneLabel.bottomAnchor, constant: 24),
             addressTextLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
         ])
     }

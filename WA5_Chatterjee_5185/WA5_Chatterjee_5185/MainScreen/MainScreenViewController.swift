@@ -24,7 +24,7 @@ class MainScreenViewController: UIViewController {
         )
         
         contacts.append(Contact(name: "Sample",
-                                photo: UIImage(systemName: "person.fill")!,
+                                image: UIImage(systemName: "person.fill")!,
                                 email: "sample@sample.com",
                                 phoneType: "Cell",
                                 phoneNumber: 1112223331,
@@ -64,7 +64,7 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource{
         let phoneNumber = contacts[idx].phoneNumber
         let phoneType = contacts[idx].phoneType
         cell.labelPhoneInfo.text = "\(phoneNumber) (\(phoneType))"
-        cell.profileImage.image = contacts[idx].photo
+        cell.profileImage.image = contacts[idx].image
         return cell
     }
     

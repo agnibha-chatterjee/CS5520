@@ -94,14 +94,14 @@ class CreateContactViewController: UIViewController {
             return
         }
         
-        var photo: UIImage? = UIImage(systemName: "person.fill")
+        var image: UIImage? = UIImage(systemName: "person.fill")
         
         if self.pickedImage != nil {
-            photo = self.pickedImage
+            image = self.pickedImage
         }
     
         let newContact = Contact(name: createContactView.nameField.text!,
-                                 photo: photo!,
+                                 image: image!,
                                  email: createContactView.emailField.text!,
                                  phoneType: selectedPhoneType,
                                  phoneNumber: Int(createContactView.phoneNumberField.text!)!,

@@ -24,6 +24,7 @@ class DisplayContactViewController: UIViewController {
     }
 
     func displayProfileData() {
+        displayProfileView.contactImage.image = contact!.image
         displayProfileView.nameLabel.text! = " \(contact!.name)"
         displayProfileView.emailLabel.text! += " \(contact!.email)"
         displayProfileView.phoneLabel.text! += " \(contact!.phoneNumber) (\(contact!.phoneType))"

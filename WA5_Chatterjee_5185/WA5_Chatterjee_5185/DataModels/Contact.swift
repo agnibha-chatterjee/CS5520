@@ -10,7 +10,7 @@ import UIKit
 
 struct Contact {
     var name: String
-    var photo: UIImage
+    var image: UIImage
     var email: String
     var phoneType: String
     var phoneNumber: Int
@@ -18,9 +18,9 @@ struct Contact {
     var cityState: String
     var zip: Int
 
-    init(name: String, photo: UIImage, email: String, phoneType: String, phoneNumber: Int, address: String, cityState: String, zip: Int) {
+    init(name: String, image: UIImage, email: String, phoneType: String, phoneNumber: Int, address: String, cityState: String, zip: Int) {
         self.name = name
-        self.photo = photo
+        self.image = image
         self.email = email
         self.phoneType = phoneType
         self.phoneNumber = phoneNumber
