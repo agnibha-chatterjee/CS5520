@@ -15,6 +15,7 @@ class CreateContactView: UIView {
     var photoLabel: UILabel!
     var emailField: UITextField!
     var phoneNumberField: UITextField!
+    var phoneNumberTypeBtn: UIButton!
     var addressField: UITextField!
     var cityStateField: UITextField!
     var zipField: UITextField!
@@ -30,6 +31,7 @@ class CreateContactView: UIView {
         setupPhotoLabel()
         setupEmailField()
         setupPhoneNumberField()
+        setupPhoneNumberTypeBtn()
         setupAddressField()
         setupCityStateField()
         setupZipField()
@@ -82,6 +84,16 @@ class CreateContactView: UIView {
         phoneNumberField.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(phoneNumberField)
     }
+    
+    func setupPhoneNumberTypeBtn() {
+        phoneNumberTypeBtn = UIButton(type: .system)
+        phoneNumberTypeBtn.showsMenuAsPrimaryAction = true
+        phoneNumberTypeBtn.setTitle("Home", for: .normal)
+        phoneNumberTypeBtn.translatesAutoresizingMaskIntoConstraints = false
+        phoneNumberTypeBtn.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        phoneNumberTypeBtn.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        self.addSubview(phoneNumberTypeBtn)
+    }
 
     func setupAddressField() {
         addressField = UITextField()
@@ -128,7 +140,11 @@ class CreateContactView: UIView {
 
             phoneNumberField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 16),
             phoneNumberField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
-            phoneNumberField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            phoneNumberField.trailingAnchor.constraint(equalTo: phoneNumberTypeBtn.leadingAnchor, constant: -8),
+
+            phoneNumberTypeBtn.centerYAnchor.constraint(equalTo: phoneNumberField.centerYAnchor),
+            phoneNumberTypeBtn.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            phoneNumberTypeBtn.widthAnchor.constraint(equalToConstant: 50),
 
             addressField.topAnchor.constraint(equalTo: phoneNumberField.bottomAnchor, constant: 16),
             addressField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),

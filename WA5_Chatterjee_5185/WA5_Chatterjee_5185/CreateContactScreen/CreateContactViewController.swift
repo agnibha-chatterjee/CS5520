@@ -13,7 +13,7 @@ class CreateContactViewController: UIViewController {
     let createContactView = CreateContactView()
     
     let phoneTypes = ["Cell", "Work", "Home"]
-    var selectedPhoneType = "Cell"
+    var selectedPhoneType = "Home"
     
     var delegate: MainScreenViewController!
     
@@ -33,8 +33,7 @@ class CreateContactViewController: UIViewController {
     
         title = "Add Contact"
         createContactView.photoPickerBtn.menu = imagePickerMenu()
-//        createContactView.phoneTypePicker.delegate = self
-//        createContactView.phoneTypePicker.dataSource = self
+        createContactView.phoneNumberTypeBtn.menu = phoneTypePickerMenu()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .save, target: self,
@@ -42,13 +41,28 @@ class CreateContactViewController: UIViewController {
         )
     }
     
+    func phoneTypePickerMenu() -> UIMenu {
+        var menuItems: [UIAction] = []
+        for type in self.phoneTypes {
+            menuItems.append(UIAction(title: type, handler: {(_) in
+                self.changePhoneTypeBtn(type)
+            }))
+        }
+        return UIMenu(title: "Select Label", children: menuItems)
+    }
+    
+    func changePhoneTypeBtn(_ type: String) {
+        self.selectedPhoneType = type
+        createContactView.phoneNumberTypeBtn.setTitle(type, for: .normal)
+    }
+    
     func imagePickerMenu() -> UIMenu {
         let menuItems = [
-            UIAction(title: "Camera", handler: {(_) in
-                self.pickUsingCamera()
-            }),
             UIAction(title: "Gallery", handler: {(_) in
                 self.pickPhotoFromGallery()
+            }),
+            UIAction(title: "Camera", handler: {(_) in
+                self.pickUsingCamera()
             })
         ]
            
