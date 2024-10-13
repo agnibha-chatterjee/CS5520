@@ -31,6 +31,7 @@ class CreateContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        title = "Add Contact"
         createContactView.phoneTypePicker.delegate = self
         createContactView.phoneTypePicker.dataSource = self
         
