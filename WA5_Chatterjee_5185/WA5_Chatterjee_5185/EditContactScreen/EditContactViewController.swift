@@ -36,7 +36,7 @@ class EditContactViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        title = "Add Contact"
+        title = "Edit"
         editContactView.photoPickerBtn.menu = imagePickerMenu()
         editContactView.phoneNumberTypeBtn.menu = phoneTypePickerMenu()
         
