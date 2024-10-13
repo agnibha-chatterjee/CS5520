@@ -22,6 +22,7 @@ class CreateContactViewController: UIViewController {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
         tapRecognizer.cancelsTouchesInView = false
         view.addGestureRecognizer(tapRecognizer)
+    
     }
     
     @objc func hideKeyboardOnTap(){
@@ -35,10 +36,8 @@ class CreateContactViewController: UIViewController {
         createContactView.photoPickerBtn.menu = imagePickerMenu()
         createContactView.phoneNumberTypeBtn.menu = phoneTypePickerMenu()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .save, target: self,
-            action: #selector(onSaveBarButtonTapped)
-        )
+        createContactView.saveBtn.addTarget(self, action: #selector(onSaveBtnTapped), for: .touchUpInside)
+        
     }
     
     func phoneTypePickerMenu() -> UIMenu {
@@ -77,7 +76,7 @@ class CreateContactViewController: UIViewController {
            
     }
     
-    @objc func onSaveBarButtonTapped() {
+    @objc func onSaveBtnTapped() {
         if !validateAllFields() {
             return
         }

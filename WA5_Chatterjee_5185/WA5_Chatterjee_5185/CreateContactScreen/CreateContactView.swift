@@ -19,6 +19,7 @@ class CreateContactView: UIView {
     var addressField: UITextField!
     var cityStateField: UITextField!
     var zipField: UITextField!
+    var saveBtn: UIButton!
   
     
     override init(frame: CGRect) {
@@ -35,6 +36,8 @@ class CreateContactView: UIView {
         setupAddressField()
         setupCityStateField()
         setupZipField()
+        setupSaveBtn()
+        
         initConstraints()
     }
     
@@ -90,8 +93,6 @@ class CreateContactView: UIView {
         phoneNumberTypeBtn.showsMenuAsPrimaryAction = true
         phoneNumberTypeBtn.setTitle("Home", for: .normal)
         phoneNumberTypeBtn.translatesAutoresizingMaskIntoConstraints = false
-        phoneNumberTypeBtn.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        phoneNumberTypeBtn.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         self.addSubview(phoneNumberTypeBtn)
     }
 
@@ -118,6 +119,13 @@ class CreateContactView: UIView {
         zipField.keyboardType = .numberPad
         zipField.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(zipField)
+    }
+    
+    func setupSaveBtn() {
+        saveBtn = UIButton(type: .system)
+        saveBtn.setTitle("Save", for: .normal)
+        saveBtn.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(saveBtn)
     }
         
     func initConstraints() {
@@ -157,6 +165,10 @@ class CreateContactView: UIView {
             zipField.topAnchor.constraint(equalTo: cityStateField.bottomAnchor, constant: 16),
             zipField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             zipField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            
+            saveBtn.topAnchor.constraint(equalTo: zipField.bottomAnchor, constant: 16),
+            saveBtn.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+
         ])
     }
     
