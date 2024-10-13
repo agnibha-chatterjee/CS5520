@@ -35,6 +35,14 @@ class TableViewContactCell: UITableViewCell {
         wrapperCellView.layer.borderColor = UIColor.gray.cgColor
         wrapperCellView.layer.borderWidth = 1
         wrapperCellView.layer.cornerRadius = 5
+        
+        wrapperCellView.backgroundColor = .white
+        wrapperCellView.layer.cornerRadius = 8.0
+        wrapperCellView.layer.shadowColor = UIColor.gray.cgColor
+        wrapperCellView.layer.shadowOffset = .zero
+        wrapperCellView.layer.shadowRadius = 3.0
+        wrapperCellView.layer.shadowOpacity = 0.5
+        
         wrapperCellView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(wrapperCellView)
     }
