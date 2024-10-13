@@ -13,9 +13,9 @@ class CreateContactViewController: UIViewController {
     
     let createContactView = CreateContactView()
     
-    let phoneTypes = ["Cell", "Work", "Home"]
+    let phoneTypes = ["Home", "Work", "Cell"]
     var selectedPhoneType = "Home"
-    var pickedImage: UIImage? = nil
+    var pickedImage: UIImage? = UIImage(systemName: "person.fill")
     
     var delegate: MainScreenViewController!
     
@@ -94,14 +94,9 @@ class CreateContactViewController: UIViewController {
             return
         }
         
-        var image: UIImage? = UIImage(systemName: "person.fill")
-        
-        if self.pickedImage != nil {
-            image = self.pickedImage
-        }
     
         let newContact = Contact(name: createContactView.nameField.text!,
-                                 image: image!,
+                                 image: self.pickedImage!,
                                  email: createContactView.emailField.text!,
                                  phoneType: selectedPhoneType,
                                  phoneNumber: Int(createContactView.phoneNumberField.text!)!,

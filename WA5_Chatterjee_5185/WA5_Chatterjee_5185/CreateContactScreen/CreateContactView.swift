@@ -57,6 +57,7 @@ class CreateContactView: UIView {
         photoPickerBtn.setImage(UIImage(systemName: "camera.fill"), for: .normal)
         photoPickerBtn.contentHorizontalAlignment = .fill
         photoPickerBtn.contentVerticalAlignment = .fill
+        photoPickerBtn.tintColor = .gray
         photoPickerBtn.imageView?.contentMode = .scaleAspectFit
         photoPickerBtn.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(photoPickerBtn)
