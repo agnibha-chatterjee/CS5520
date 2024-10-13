@@ -35,11 +35,7 @@ class DisplayContactViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
         self.navigationController?.pushViewController(editProfileViewController, animated: true)
     }
-    
-//    func delegateEditContact(_ updatedContact: Contact) {
-//        self.delegate.delegateOnEditContact(updatedContact)
-//        
-//    }
+
 
     func displayProfileData() {
         displayProfileView.contactImage.image = contact!.image
