@@ -11,6 +11,7 @@ class MainScreenViewController: UIViewController {
     
     let mainScreenView = MainScreenView()
     var contacts = [Contact]()
+    var selectedContactIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,11 @@ class MainScreenViewController: UIViewController {
         mainScreenView.tableViewContacts.reloadData()
     }
     
+    func delegateOnEditContact(_ updatedContact: Contact) {
+        contacts[self.selectedContactIndex] = updatedContact
+        mainScreenView.tableViewContacts.reloadData()
+    }
+    
     @objc func onAddBarButtonTapped() {
         let createContactViewController = CreateContactViewController()
         createContactViewController.delegate = self
@@ -69,10 +75,11 @@ extension MainScreenViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedContactIndex = indexPath.row
         let selectedContact = self.contacts[indexPath.row]
         let displayProfileViewController = DisplayContactViewController()
         displayProfileViewController.contact = selectedContact
-        
+        displayProfileViewController.delegate = self
         self.navigationController?.pushViewController(displayProfileViewController, animated: true)
     }
 }

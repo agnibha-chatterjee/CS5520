@@ -11,7 +11,7 @@ class DisplayContactViewController: UIViewController {
     
     let displayProfileView = DisplayContactView()
     var contact: Contact? = nil
-
+    var delegate: MainScreenViewController!
 
     override func loadView() {
         view = displayProfileView
@@ -19,9 +19,27 @@ class DisplayContactViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .edit, target: self,
+            action: #selector(onEditBtnTapped)
+        )
+            
         displayProfileData()
     }
+    
+    @objc func onEditBtnTapped() {
+        let editProfileViewController = EditContactViewController()
+        editProfileViewController.delegate = self.delegate
+        editProfileViewController.contact = self.contact
+        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.pushViewController(editProfileViewController, animated: true)
+    }
+    
+//    func delegateEditContact(_ updatedContact: Contact) {
+//        self.delegate.delegateOnEditContact(updatedContact)
+//        
+//    }
 
     func displayProfileData() {
         displayProfileView.contactImage.image = contact!.image
