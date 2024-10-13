@@ -71,7 +71,11 @@ class CreateContactViewController: UIViewController {
     }
        
     func pickUsingCamera() {
-           
+        let cameraController = UIImagePickerController()
+        cameraController.sourceType = .camera
+        cameraController.allowsEditing = true
+        cameraController.delegate = self
+        present(cameraController, animated: true)
     }
        
     func pickPhotoFromGallery() {
@@ -235,4 +239,18 @@ extension CreateContactViewController: PHPickerViewControllerDelegate{
     }
 }
 
-
+extension CreateContactViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        if let image = info[.editedImage] as? UIImage {
+            self.createContactView.photoPickerBtn.setImage(
+                image.withRenderingMode(.alwaysOriginal),
+                for: .normal
+            )
+            self.pickedImage = image
+        } else {
+            // Image was not uploaded
+        }
+    }
+}
