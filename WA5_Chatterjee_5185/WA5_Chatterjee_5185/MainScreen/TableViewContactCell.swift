@@ -75,22 +75,22 @@ class TableViewContactCell: UITableViewCell {
             wrapperCellView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
             wrapperCellView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
             
+            profileImage.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 8),
+            profileImage.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),
+            profileImage.heightAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -16),
+            profileImage.widthAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -16),
+            
             labelName.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 4),
-            labelName.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 4),
+            labelName.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 16),
             labelName.heightAnchor.constraint(equalToConstant: 20),
             
             labelEmail.topAnchor.constraint(equalTo: labelName.bottomAnchor, constant: 4),
-            labelEmail.leadingAnchor.constraint(equalTo: labelName.leadingAnchor),
+            labelEmail.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 16),
             labelEmail.heightAnchor.constraint(equalToConstant: 20),
             
             labelPhoneInfo.topAnchor.constraint(equalTo: labelEmail.bottomAnchor, constant: 4),
-            labelPhoneInfo.leadingAnchor.constraint(equalTo: labelEmail.leadingAnchor),
+            labelPhoneInfo.leadingAnchor.constraint(equalTo: profileImage.trailingAnchor, constant: 16),
             labelPhoneInfo.heightAnchor.constraint(equalToConstant: 20),
-            
-            profileImage.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 8),
-            profileImage.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),
-            profileImage.heightAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -20),
-            profileImage.widthAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -20),
             
             wrapperCellView.heightAnchor.constraint(equalToConstant: 76)
         ])

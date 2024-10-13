@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 
 class CreateContactViewController: UIViewController {
@@ -14,6 +15,7 @@ class CreateContactViewController: UIViewController {
     
     let phoneTypes = ["Cell", "Work", "Home"]
     var selectedPhoneType = "Home"
+    var pickedImage: UIImage?
     
     var delegate: MainScreenViewController!
     
@@ -57,12 +59,12 @@ class CreateContactViewController: UIViewController {
     
     func imagePickerMenu() -> UIMenu {
         let menuItems = [
+            UIAction(title: "Camera", handler: {(_) in
+                self.pickUsingCamera()
+            }),
             UIAction(title: "Gallery", handler: {(_) in
                 self.pickPhotoFromGallery()
             }),
-            UIAction(title: "Camera", handler: {(_) in
-                self.pickUsingCamera()
-            })
         ]
            
         return UIMenu(title: "Select source", children: menuItems)
@@ -73,7 +75,14 @@ class CreateContactViewController: UIViewController {
     }
        
     func pickPhotoFromGallery() {
-           
+        var configuration = PHPickerConfiguration()
+        configuration.filter = PHPickerFilter.any(of: [.images])
+        configuration.selectionLimit = 1
+                
+        let photoPicker = PHPickerViewController(configuration: configuration)
+                
+        photoPicker.delegate = self
+        present(photoPicker, animated: true, completion: nil)
     }
     
     @objc func onSaveBtnTapped() {
@@ -83,6 +92,7 @@ class CreateContactViewController: UIViewController {
        
     
         let newContact = Contact(name: createContactView.nameField.text!,
+                                 photo: self.pickedImage!,
                                  email: createContactView.emailField.text!,
                                  phoneType: selectedPhoneType,
                                  phoneNumber: Int(createContactView.phoneNumberField.text!)!,
@@ -104,6 +114,9 @@ class CreateContactViewController: UIViewController {
     func validateEmptyFields() -> Bool {
         if createContactView.nameField.text?.isEmpty == true {
             showAlert(message: "Name cannot be empty")
+            return false
+        } else if self.pickedImage == nil {
+            showAlert(message: "You forgot to pick a photo")
             return false
         } else if createContactView.emailField.text?.isEmpty == true {
             showAlert(message: "Email cannot be empty")
@@ -196,19 +209,28 @@ class CreateContactViewController: UIViewController {
     }
 }
 
-//extension CreateContactViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return phoneTypes.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        selectedPhoneType = phoneTypes[row]
-//        return phoneTypes[row]
-//    }
-//}
+extension CreateContactViewController: PHPickerViewControllerDelegate{
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        dismiss(animated: true)
+    
+        let itemProvider = results.map(\.itemProvider)
+        
+        for item in itemProvider {
+            if item.canLoadObject(ofClass: UIImage.self) {
+                item.loadObject(ofClass: UIImage.self, completionHandler: { (image, error) in
+                    DispatchQueue.main.async{
+                        if let uwImage = image as? UIImage{
+                            self.createContactView.photoPickerBtn.setImage(
+                                uwImage.withRenderingMode(.alwaysOriginal),
+                                for: .normal
+                            )
+                            self.pickedImage = uwImage
+                        }
+                    }
+                })
+            }
+        }
+    }
+}
 
 
