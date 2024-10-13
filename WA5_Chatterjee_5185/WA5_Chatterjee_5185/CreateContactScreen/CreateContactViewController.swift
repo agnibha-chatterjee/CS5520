@@ -15,7 +15,7 @@ class CreateContactViewController: UIViewController {
     
     let phoneTypes = ["Cell", "Work", "Home"]
     var selectedPhoneType = "Home"
-    var pickedImage: UIImage?
+    var pickedImage: UIImage? = nil
     
     var delegate: MainScreenViewController!
     
@@ -89,10 +89,15 @@ class CreateContactViewController: UIViewController {
         if !validateAllFields() {
             return
         }
-       
+        
+        var photo: UIImage? = UIImage(systemName: "person.fill")
+        
+        if self.pickedImage != nil {
+            photo = self.pickedImage
+        }
     
         let newContact = Contact(name: createContactView.nameField.text!,
-                                 photo: self.pickedImage!,
+                                 photo: photo!,
                                  email: createContactView.emailField.text!,
                                  phoneType: selectedPhoneType,
                                  phoneNumber: Int(createContactView.phoneNumberField.text!)!,
@@ -114,9 +119,6 @@ class CreateContactViewController: UIViewController {
     func validateEmptyFields() -> Bool {
         if createContactView.nameField.text?.isEmpty == true {
             showAlert(message: "Name cannot be empty")
-            return false
-        } else if self.pickedImage == nil {
-            showAlert(message: "You forgot to pick a photo")
             return false
         } else if createContactView.emailField.text?.isEmpty == true {
             showAlert(message: "Email cannot be empty")
