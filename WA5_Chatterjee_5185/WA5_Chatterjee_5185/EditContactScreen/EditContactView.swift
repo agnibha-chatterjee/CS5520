@@ -140,7 +140,7 @@ class EditContactView: UIView {
             photoPickerBtn.heightAnchor.constraint(equalToConstant: 100),
             photoPickerBtn.widthAnchor.constraint(equalToConstant: 100),
             
-            photoLabel.topAnchor.constraint(equalTo: photoPickerBtn.bottomAnchor, constant: -16),
+            photoLabel.topAnchor.constraint(equalTo: photoPickerBtn.bottomAnchor, constant: 0),
             photoLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
 
             emailField.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 16),
