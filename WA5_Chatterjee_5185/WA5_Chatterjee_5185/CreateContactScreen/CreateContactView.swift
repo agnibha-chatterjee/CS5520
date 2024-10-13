@@ -6,14 +6,14 @@
 //
 
 import UIKit
+import PhotosUI
 
 class CreateContactView: UIView {
 
     var nameField: UITextField!
+    var photoPickerBtn: UIButton!
+    var photoLabel: UILabel!
     var emailField: UITextField!
-    var addPhoneLabel: UILabel!
-    var selectTypeLabel: UILabel!
-    var phoneTypePicker: UIPickerView!
     var phoneNumberField: UITextField!
     var addressField: UITextField!
     var cityStateField: UITextField!
@@ -26,10 +26,9 @@ class CreateContactView: UIView {
         self.backgroundColor = .white
 
         setupNameField()
+        setupPhotoPickerBtn()
+        setupPhotoLabel()
         setupEmailField()
-        setupAddPhoneLabel()
-        setupSelectTypeLabel()
-        setupPhoneTypePicker()
         setupPhoneNumberField()
         setupAddressField()
         setupCityStateField()
@@ -46,6 +45,26 @@ class CreateContactView: UIView {
         self.addSubview(nameField)
     }
     
+    func setupPhotoPickerBtn() {
+        photoPickerBtn = UIButton(type: .system)
+        photoPickerBtn.showsMenuAsPrimaryAction = true
+        photoPickerBtn.setTitle("", for: .normal)
+        photoPickerBtn.setImage(UIImage(systemName: "camera.fill"), for: .normal)
+        photoPickerBtn.contentHorizontalAlignment = .fill
+        photoPickerBtn.contentVerticalAlignment = .fill
+        photoPickerBtn.imageView?.contentMode = .scaleAspectFit
+        photoPickerBtn.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(photoPickerBtn)
+    }
+    
+    func setupPhotoLabel() {
+        photoLabel = UILabel()
+        photoLabel.text = "Photo"
+        photoLabel.font = photoLabel.font.withSize(22)
+        photoLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(photoLabel)
+    }
+    
     func setupEmailField() {
         emailField = UITextField()
         emailField.placeholder = "Email"
@@ -53,28 +72,6 @@ class CreateContactView: UIView {
         nameField.keyboardType = .emailAddress
         emailField.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(emailField)
-    }
-
-    func setupAddPhoneLabel() {
-        addPhoneLabel = UILabel()
-        addPhoneLabel.text = "Add Phone"
-        addPhoneLabel.font = addPhoneLabel.font.withSize(22)
-        addPhoneLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(addPhoneLabel)
-    }
-
-    func setupSelectTypeLabel() {
-        selectTypeLabel = UILabel()
-        selectTypeLabel.text = "Select Type:"
-        selectTypeLabel.font = selectTypeLabel.font.withSize(18)
-        selectTypeLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(selectTypeLabel)
-    }
-
-    func setupPhoneTypePicker() {
-        phoneTypePicker = UIPickerView()
-        phoneTypePicker.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(phoneTypePicker)
     }
 
     func setupPhoneNumberField() {
@@ -110,29 +107,26 @@ class CreateContactView: UIView {
         zipField.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(zipField)
     }
-
-   
-    
+        
     func initConstraints() {
         NSLayoutConstraint.activate([
-            nameField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
+            nameField.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 48),
             nameField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             nameField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            
+            photoPickerBtn.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: 16),
+            photoPickerBtn.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            photoPickerBtn.heightAnchor.constraint(equalToConstant: 100),
+            photoPickerBtn.widthAnchor.constraint(equalToConstant: 100),
+            
+            photoLabel.topAnchor.constraint(equalTo: photoPickerBtn.bottomAnchor, constant: -16),
+            photoLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
 
-            emailField.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: 16),
+            emailField.topAnchor.constraint(equalTo: photoLabel.bottomAnchor, constant: 16),
             emailField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             emailField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -24),
 
-            addPhoneLabel.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 32),
-            addPhoneLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-
-            selectTypeLabel.topAnchor.constraint(equalTo: addPhoneLabel.bottomAnchor, constant: 8),
-            selectTypeLabel.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-
-            phoneTypePicker.topAnchor.constraint(equalTo: selectTypeLabel.bottomAnchor, constant: -8),
-            phoneTypePicker.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
-
-            phoneNumberField.topAnchor.constraint(equalTo: phoneTypePicker.bottomAnchor, constant: 16),
+            phoneNumberField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 16),
             phoneNumberField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             phoneNumberField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -24),
 

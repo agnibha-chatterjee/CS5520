@@ -32,13 +32,35 @@ class CreateContactViewController: UIViewController {
         super.viewDidLoad()
     
         title = "Add Contact"
-        createContactView.phoneTypePicker.delegate = self
-        createContactView.phoneTypePicker.dataSource = self
+        createContactView.photoPickerBtn.menu = imagePickerMenu()
+//        createContactView.phoneTypePicker.delegate = self
+//        createContactView.phoneTypePicker.dataSource = self
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .save, target: self,
             action: #selector(onSaveBarButtonTapped)
         )
+    }
+    
+    func imagePickerMenu() -> UIMenu {
+        let menuItems = [
+            UIAction(title: "Camera", handler: {(_) in
+                self.pickUsingCamera()
+            }),
+            UIAction(title: "Gallery", handler: {(_) in
+                self.pickPhotoFromGallery()
+            })
+        ]
+           
+        return UIMenu(title: "Select source", children: menuItems)
+    }
+       
+    func pickUsingCamera() {
+           
+    }
+       
+    func pickPhotoFromGallery() {
+           
     }
     
     @objc func onSaveBarButtonTapped() {
@@ -161,19 +183,19 @@ class CreateContactViewController: UIViewController {
     }
 }
 
-extension CreateContactViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return phoneTypes.count
-    }
-
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        selectedPhoneType = phoneTypes[row]
-        return phoneTypes[row]
-    }
-}
+//extension CreateContactViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return phoneTypes.count
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        selectedPhoneType = phoneTypes[row]
+//        return phoneTypes[row]
+//    }
+//}
 
 
