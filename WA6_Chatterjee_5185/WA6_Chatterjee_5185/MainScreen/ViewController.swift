@@ -257,7 +257,13 @@ class ViewController: UIViewController {
                             case 200...299:
                             //MARK: the request was valid 200-level...
                                 //MARK: show alert with details...
-                                self.showDetailsInAlert(data: data)
+                                let parts = data.components(separatedBy: ",")
+                                let name = parts[0].trimmingCharacters(in: .whitespacesAndNewlines)
+                                let email = parts[1].trimmingCharacters(in: .whitespacesAndNewlines)
+                                if let phone = Int(parts[2].trimmingCharacters(in: .whitespacesAndNewlines)) {
+                                    let contact = Contact(name: name, email: email, phone: phone)
+                                    self.navigateToDisplayContact(contact: contact)
+                                }
                                 break
                     
                             case 400...499:
@@ -283,6 +289,11 @@ class ViewController: UIViewController {
         }
     }
     
+    func navigateToDisplayContact(contact: Contact) {
+        let displayContactController = DisplayContactController(contact: contact)
+        navigationController?.pushViewController(displayContactController, animated: true)
+    }
+
     func handleDeleteContact(name: String) {
         let alert = UIAlertController(title: "Delete Contact", message: "Are you sure you want to delete \(name)?", preferredStyle: .alert)
         

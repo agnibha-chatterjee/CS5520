@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -38,6 +38,10 @@
 		FF000C77FD31F71A19EAD79A /* Pods-WA6_Chatterjee_5185.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WA6_Chatterjee_5185.release.xcconfig"; path = "Target Support Files/Pods-WA6_Chatterjee_5185/Pods-WA6_Chatterjee_5185.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F0DE75B12CC7716800D134BD /* DisplayContactScreen */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DisplayContactScreen; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		4B5069762A2010D500EDF0F8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -71,6 +75,7 @@
 		4B50697B2A2010D500EDF0F8 /* WA6_Chatterjee_5185 */ = {
 			isa = PBXGroup;
 			children = (
+				F0DE75B12CC7716800D134BD /* DisplayContactScreen */,
 				4B5069992A2015F900EDF0F8 /* APIConfigs.swift */,
 				4B5069972A2013E700EDF0F8 /* Data models */,
 				4B5069962A2013C500EDF0F8 /* MainScreen */,
@@ -124,7 +129,6 @@
 				B8FE70112E432149B12747B3 /* Pods-WA6_Chatterjee_5185.debug.xcconfig */,
 				FF000C77FD31F71A19EAD79A /* Pods-WA6_Chatterjee_5185.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -144,6 +148,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F0DE75B12CC7716800D134BD /* DisplayContactScreen */,
 			);
 			name = WA6_Chatterjee_5185;
 			productName = WA6_Chatterjee_5185;
