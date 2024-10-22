@@ -11,12 +11,14 @@ class ContactsTableViewCell: UITableViewCell {
     
     var wrapperCellView: UIView!
     var labelName: UILabel!
+    var buttonOptions: UIButton!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupWrapperCellView()
         setupLabelName()
+        setupButtonOptions()
         
         initConstraints()
     }
@@ -42,6 +44,14 @@ class ContactsTableViewCell: UITableViewCell {
         wrapperCellView.addSubview(labelName)
     }
     
+    func setupButtonOptions(){
+        buttonOptions = UIButton(type: .system)
+        buttonOptions.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        buttonOptions.tintColor = .darkGray
+        buttonOptions.translatesAutoresizingMaskIntoConstraints = false
+        wrapperCellView.addSubview(buttonOptions)
+    }
+    
     func initConstraints(){
         NSLayoutConstraint.activate([
             wrapperCellView.topAnchor.constraint(equalTo: self.topAnchor,constant: 4),
@@ -52,14 +62,19 @@ class ContactsTableViewCell: UITableViewCell {
             labelName.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 8),
             labelName.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 10),
             labelName.heightAnchor.constraint(equalToConstant: 20),
-            labelName.widthAnchor.constraint(equalTo: wrapperCellView.widthAnchor),
             
-            wrapperCellView.heightAnchor.constraint(equalToConstant: 36)
+            wrapperCellView.heightAnchor.constraint(equalToConstant: 44),
             
+            buttonOptions.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),
+            buttonOptions.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -10),
+            buttonOptions.widthAnchor.constraint(equalToConstant: 30),
+            buttonOptions.heightAnchor.constraint(equalToConstant: 30),
+            
+            labelName.trailingAnchor.constraint(equalTo: buttonOptions.leadingAnchor, constant: -10)
         ])
-        
     }
 
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -67,12 +82,9 @@ class ContactsTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
