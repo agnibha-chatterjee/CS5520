@@ -91,7 +91,7 @@ class EditContactViewController: UIViewController {
                         if let uwStatusCode = status{
                             switch uwStatusCode{
                                 case 200...299:
-                                self.notificationCenter.post(name: Notification.Name("refreshContacts"), object: nil)
+                                self.notificationCenter.post(name: .refreshContacts, object: nil)
                                 self.navigationController?.popViewController(animated: true)
                                     break
                         

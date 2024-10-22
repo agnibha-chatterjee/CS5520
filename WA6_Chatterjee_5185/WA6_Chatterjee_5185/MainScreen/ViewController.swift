@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         notificationCenter.addObserver(
         self, 
         selector: #selector(refreshContacts(notification:)),
-        name: Notification.Name("refreshContacts"),
+        name: .refreshContacts,
         object: nil)
     }
 

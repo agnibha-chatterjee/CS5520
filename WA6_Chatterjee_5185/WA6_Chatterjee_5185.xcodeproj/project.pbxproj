@@ -18,6 +18,7 @@
 		4B5069952A2013B900EDF0F8 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5069942A2013B900EDF0F8 /* ContactsTableViewCell.swift */; };
 		4B50699A2A2015F900EDF0F8 /* APIConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5069992A2015F900EDF0F8 /* APIConfigs.swift */; };
 		ED35E7E1EFBBA41898CC04A7 /* Pods_WA6_Chatterjee_5185.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BDBCF123FF72DE28622BAD /* Pods_WA6_Chatterjee_5185.framework */; };
+		F0DE75C02CC7830100D134BD /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DE75BF2CC782FD00D134BD /* NotificationNames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		4B5069992A2015F900EDF0F8 /* APIConfigs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfigs.swift; sourceTree = "<group>"; };
 		B8FE70112E432149B12747B3 /* Pods-WA6_Chatterjee_5185.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WA6_Chatterjee_5185.debug.xcconfig"; path = "Target Support Files/Pods-WA6_Chatterjee_5185/Pods-WA6_Chatterjee_5185.debug.xcconfig"; sourceTree = "<group>"; };
 		E1BDBCF123FF72DE28622BAD /* Pods_WA6_Chatterjee_5185.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WA6_Chatterjee_5185.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0DE75BF2CC782FD00D134BD /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		FF000C77FD31F71A19EAD79A /* Pods-WA6_Chatterjee_5185.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WA6_Chatterjee_5185.release.xcconfig"; path = "Target Support Files/Pods-WA6_Chatterjee_5185/Pods-WA6_Chatterjee_5185.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 		4B50697B2A2010D500EDF0F8 /* WA6_Chatterjee_5185 */ = {
 			isa = PBXGroup;
 			children = (
+				F0DE75BF2CC782FD00D134BD /* NotificationNames.swift */,
 				F0DE75B82CC7779C00D134BD /* EditContactScreen */,
 				F0DE75B12CC7716800D134BD /* DisplayContactScreen */,
 				4B5069992A2015F900EDF0F8 /* APIConfigs.swift */,
@@ -253,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0DE75C02CC7830100D134BD /* NotificationNames.swift in Sources */,
 				4B5069912A20119300EDF0F8 /* Contact.swift in Sources */,
 				4B5069932A20120A00EDF0F8 /* MainScreenView.swift in Sources */,
 				4B5069952A2013B900EDF0F8 /* ContactsTableViewCell.swift in Sources */,
