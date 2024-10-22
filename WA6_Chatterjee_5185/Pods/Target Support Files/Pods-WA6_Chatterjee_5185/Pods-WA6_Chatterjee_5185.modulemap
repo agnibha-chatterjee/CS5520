@@ -1,0 +1,6 @@
+framework module Pods_WA6_Chatterjee_5185 {
+  umbrella header "Pods-WA6_Chatterjee_5185-umbrella.h"
+
+  export *
+  module * { export * }
+}
