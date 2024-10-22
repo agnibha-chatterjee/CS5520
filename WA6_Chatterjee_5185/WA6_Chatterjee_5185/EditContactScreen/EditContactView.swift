@@ -68,7 +68,7 @@ class EditContactView: UIView {
     func setupButtonSave() {
         buttonSave = UIButton(type: .system)
         buttonSave.titleLabel?.font = .boldSystemFont(ofSize: 16)
-        buttonSave.setTitle("Save Edited Contact", for: .normal)
+        buttonSave.setTitle("Save", for: .normal)
         buttonSave.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(buttonSave)
     }
