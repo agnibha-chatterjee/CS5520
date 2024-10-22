@@ -8,10 +8,8 @@
 import UIKit
 
 class MainScreenView: UIView {
-    //MARK: tableView for contacts...
     var tableViewContacts: UITableView!
     
-    //MARK: bottom view for adding a Contact...
     var bottomAddView:UIView!
     var textFieldAddName:UITextField!
     var textFieldAddEmail:UITextField!
@@ -33,7 +31,6 @@ class MainScreenView: UIView {
         initConstraints()
     }
     
-    //MARK: the table view to show the list of contacts...
     func setupTableViewContacts(){
         tableViewContacts = UITableView()
         tableViewContacts.register(ContactsTableViewCell.self, forCellReuseIdentifier: "names")
@@ -41,7 +38,6 @@ class MainScreenView: UIView {
         self.addSubview(tableViewContacts)
     }
     
-    //MARK: the bottom add contact view....
     func setupBottomAddView(){
         bottomAddView = UIView()
         bottomAddView.backgroundColor = .white
@@ -110,7 +106,6 @@ class MainScreenView: UIView {
             textFieldAddName.trailingAnchor.constraint(equalTo: textFieldAddEmail.trailingAnchor),
             
             bottomAddView.topAnchor.constraint(equalTo: textFieldAddName.topAnchor, constant: -8),
-            //...
             
             tableViewContacts.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 32),
             tableViewContacts.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 8),
@@ -121,8 +116,6 @@ class MainScreenView: UIView {
         ])
     }
     
-    
-    //MARK: initializing constraints...
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

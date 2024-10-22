@@ -1,12 +1,8 @@
 //
 //  Contact.swift
 //  WA6_Chatterjee_5185
-//
-//  
-//
 
 import Foundation
-//MARK: struct for a contact...
 struct Contact{
     var name:String
     var email:String
