@@ -279,7 +279,7 @@ class ViewController: UIViewController {
     func editDeleteMenu(for name: String) -> UIMenu {
         let menuItems = [
             UIAction(title: "Edit", handler: { _ in
-                print("Edit selected")
+                self.getContactDetailsForEdit(name: name)
             }),
             UIAction(title: "Delete", handler: { _ in
                 self.handleDeleteContact(name: name)
@@ -287,6 +287,37 @@ class ViewController: UIViewController {
         ]
                
         return UIMenu(title: "Select action", children: menuItems)
+    }
+
+    func getContactDetailsForEdit(name: String) {
+        if let url = URL(string: APIConfigs.baseURL+"details") {
+            AF.request(url, method: .get,
+                       parameters: ["name": name],
+                       encoding: URLEncoding.queryString)
+                .responseString { response in
+                    switch response.result {
+                    case .success(let data):
+                        if let statusCode = response.response?.statusCode, (200...299).contains(statusCode) {
+                            let parts = data.components(separatedBy: ",")
+                            let name = parts[0].trimmingCharacters(in: .whitespacesAndNewlines)
+                            let email = parts[1].trimmingCharacters(in: .whitespacesAndNewlines)
+                            if let phone = Int(parts[2].trimmingCharacters(in: .whitespacesAndNewlines)) {
+                                let contact = Contact(name: name, email: email, phone: phone)
+                                self.navigateToEditContact(contact: contact)
+                            }
+                        } else {
+                            print("Error: \(data)")
+                        }
+                    case .failure(let error):
+                        print("Error: \(error)")
+                    }
+                }
+        }
+    }
+
+    func navigateToEditContact(contact: Contact) {
+        let editContactController = EditContactViewController(contact: contact)
+        navigationController?.pushViewController(editContactController, animated: true)
     }
 }
 

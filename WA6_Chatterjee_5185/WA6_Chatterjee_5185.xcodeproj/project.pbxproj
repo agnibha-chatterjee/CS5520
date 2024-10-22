@@ -40,6 +40,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F0DE75B12CC7716800D134BD /* DisplayContactScreen */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = DisplayContactScreen; sourceTree = "<group>"; };
+		F0DE75B82CC7779C00D134BD /* EditContactScreen */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = EditContactScreen; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 		4B50697B2A2010D500EDF0F8 /* WA6_Chatterjee_5185 */ = {
 			isa = PBXGroup;
 			children = (
+				F0DE75B82CC7779C00D134BD /* EditContactScreen */,
 				F0DE75B12CC7716800D134BD /* DisplayContactScreen */,
 				4B5069992A2015F900EDF0F8 /* APIConfigs.swift */,
 				4B5069972A2013E700EDF0F8 /* Data models */,
@@ -151,6 +153,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				F0DE75B12CC7716800D134BD /* DisplayContactScreen */,
+				F0DE75B82CC7779C00D134BD /* EditContactScreen */,
 			);
 			name = WA6_Chatterjee_5185;
 			productName = WA6_Chatterjee_5185;
