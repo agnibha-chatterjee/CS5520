@@ -2,8 +2,6 @@
 //  Configs.swift
 //  WA6_Chatterjee_5185
 //
-//  
-//
 
 import Foundation
 
