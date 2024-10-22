@@ -12,6 +12,7 @@ class EditContactViewController: UIViewController {
     
     let editContactScreen = EditContactView()
     let contact: Contact
+    let notificationCenter = NotificationCenter.default
     
     init(contact: Contact) {
         self.contact = contact
@@ -58,7 +59,6 @@ class EditContactViewController: UIViewController {
                         if let uwStatusCode = status {
                             switch uwStatusCode {
                             case 200...299:
-                                print("deleted successfully")
                                 self.addUpdatedContact(updatedContact)
                             case 400...499:
                                 print("Error: \(data)")
@@ -91,9 +91,8 @@ class EditContactViewController: UIViewController {
                         if let uwStatusCode = status{
                             switch uwStatusCode{
                                 case 200...299:
-                                print("added successfully")
-                                // self.getAllContacts()
-                                // self.clearAddViewFields()
+                                self.notificationCenter.post(name: Notification.Name("refreshContacts"), object: nil)
+                                self.navigationController?.popViewController(animated: true)
                                     break
                         
                                 case 400...499:

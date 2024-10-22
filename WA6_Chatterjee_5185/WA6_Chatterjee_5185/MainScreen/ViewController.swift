@@ -9,9 +9,11 @@ import Alamofire
 class ViewController: UIViewController {
     
     let mainScreen = MainScreenView()
-    
     var contactNames = [String]()
     
+    let notificationCenter = NotificationCenter.default
+
+
     override func loadView() {
         view = mainScreen
     }
@@ -24,10 +26,21 @@ class ViewController: UIViewController {
         mainScreen.tableViewContacts.dataSource = self
         mainScreen.tableViewContacts.delegate = self
         mainScreen.tableViewContacts.separatorStyle = .none
+
         
         getAllContacts()
         
         mainScreen.buttonAdd.addTarget(self, action: #selector(onButtonAddTapped), for: .touchUpInside)
+
+        notificationCenter.addObserver(
+        self, 
+        selector: #selector(refreshContacts(notification:)),
+        name: Notification.Name("refreshContacts"),
+        object: nil)
+    }
+
+    @objc func refreshContacts(notification: Notification){
+        getAllContacts()
     }
 
     func showAlert(title: String = "Error", message: String) {
