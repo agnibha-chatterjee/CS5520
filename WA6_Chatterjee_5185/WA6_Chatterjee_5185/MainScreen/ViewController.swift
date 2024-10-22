@@ -2,8 +2,6 @@
 //  ViewController.swift
 //  WA6_Chatterjee_5185
 //
-//  
-//
 
 import UIKit
 import Alamofire
@@ -12,7 +10,6 @@ class ViewController: UIViewController {
     
     let mainScreen = MainScreenView()
     
-    //MARK: list to display the contact names in the TableView...
     var contactNames = [String]()
     
     override func loadView() {
@@ -22,18 +19,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Contacts"
+        title = "All Contacts"
         
-        //MARK: setting the delegate and data source...
         mainScreen.tableViewContacts.dataSource = self
         mainScreen.tableViewContacts.delegate = self
-        //MARK: removing the separator line...
         mainScreen.tableViewContacts.separatorStyle = .none
         
-        //get all contact names when the main screen loads...
         getAllContacts()
         
-        //MARK: add action to Add Contact button...
         mainScreen.buttonAdd.addTarget(self, action: #selector(onButtonAddTapped), for: .touchUpInside)
     }
 
@@ -117,28 +110,6 @@ class ViewController: UIViewController {
         mainScreen.textFieldAddPhone.text = ""
     }
     
-    func showDetailsInAlert(data: String){
-        let parts = data.components(separatedBy: ",")
-        print(parts)
-        
-        //MARK: trim the whitespaces from the strings, and show alert...
-        let name = parts[0].trimmingCharacters(in: .whitespacesAndNewlines)
-        let email = parts[1].trimmingCharacters(in: .whitespacesAndNewlines)
-        if let phone = Int(parts[2].trimmingCharacters(in: .whitespacesAndNewlines)){
-            //MARK: show alert...
-            let message = """
-                name: \(name)
-                email: \(email)
-                phone: \(phone)
-                """
-            let alert = UIAlertController(title: "Selected Contact", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true)
-        }
-        
-    }
-    
-    //MARK: add a new contact call: add endpoint...
     func addANewContact(contact: Contact){
         if let url = URL(string: APIConfigs.baseURL+"add"){
             
@@ -149,29 +120,22 @@ class ViewController: UIViewController {
                             "phone": contact.phone
                         ])
                 .responseString(completionHandler: { response in
-                    //MARK: retrieving the status code...
                     let status = response.response?.statusCode
                     
                     switch response.result{
                     case .success(let data):
-                        //MARK: there was no network error...
-                        
-                        //MARK: status code is Optional, so unwrapping it...
                         if let uwStatusCode = status{
                             switch uwStatusCode{
                                 case 200...299:
-                                //MARK: the request was valid 200-level...
                                 self.getAllContacts()
                                 self.clearAddViewFields()
                                     break
                         
                                 case 400...499:
-                                //MARK: the request was not valid 400-level...
                                     print(data)
                                     break
                         
                                 default:
-                                //MARK: probably a 500-level error...
                                     print(data)
                                     break
                         
@@ -180,32 +144,25 @@ class ViewController: UIViewController {
                         break
                         
                     case .failure(let error):
-                        //MARK: there was a network error...
                         print(error)
                         break
                     }
                 })
         }else{
-            //alert that the URL is invalid...
+            showAlert(message: "Invalid API")
         }
     }
     
-    //MARK: get all contacts call: getall endpoint...
     func getAllContacts(){
         if let url = URL(string: APIConfigs.baseURL + "getall"){
             AF.request(url, method: .get).responseString(completionHandler: { response in
-                //MARK: retrieving the status code...
                 let status = response.response?.statusCode
                 
                 switch response.result{
                 case .success(let data):
-                    //MARK: there was no network error...
-                    
-                    //MARK: status code is Optional, so unwrapping it...
                     if let uwStatusCode = status{
                         switch uwStatusCode{
                             case 200...299:
-                            //MARK: the request was valid 200-level...
                                 let names = data.components(separatedBy: "\n")
                                 self.contactNames = names
                                 self.contactNames.removeLast()
@@ -214,12 +171,10 @@ class ViewController: UIViewController {
                                 break
                     
                             case 400...499:
-                            //MARK: the request was not valid 400-level...
                                 print(data)
                                 break
                     
                             default:
-                            //MARK: probably a 500-level error...
                                 print(data)
                                 break
                     
@@ -228,7 +183,6 @@ class ViewController: UIViewController {
                     break
                     
                 case .failure(let error):
-                    //MARK: there was a network error...
                     print(error)
                     break
                 }
@@ -236,7 +190,6 @@ class ViewController: UIViewController {
         }
     }
     
-    //MARK: get details of a contact...
     func getContactDetails(name: String){
         if let url = URL(string: APIConfigs.baseURL+"details"){
             AF.request(url, method:.get,
@@ -244,19 +197,13 @@ class ViewController: UIViewController {
                        encoding: URLEncoding.queryString)
                 .responseString(completionHandler: { response in
                 
-                //MARK: retrieving the status code...
                 let status = response.response?.statusCode
                 
                 switch response.result{
                 case .success(let data):
-                    //MARK: there was no network error...
-                    
-                    //MARK: status code is Optional, so unwrapping it...
                     if let uwStatusCode = status{
                         switch uwStatusCode{
                             case 200...299:
-                            //MARK: the request was valid 200-level...
-                                //MARK: show alert with details...
                                 let parts = data.components(separatedBy: ",")
                                 let name = parts[0].trimmingCharacters(in: .whitespacesAndNewlines)
                                 let email = parts[1].trimmingCharacters(in: .whitespacesAndNewlines)
@@ -267,12 +214,10 @@ class ViewController: UIViewController {
                                 break
                     
                             case 400...499:
-                            //MARK: the request was not valid 400-level...
                                 print(data)
                                 break
                     
                             default:
-                            //MARK: probably a 500-level error...
                                 print(data)
                                 break
                     
@@ -281,7 +226,6 @@ class ViewController: UIViewController {
                     break
                     
                 case .failure(let error):
-                    //MARK: there was a network error...
                     print(error)
                     break
                 }
@@ -328,7 +272,7 @@ class ViewController: UIViewController {
                     }
                 }
         } else {
-            print("Invalid API")
+            showAlert(message: "Invalid API")
         }
     }
 
