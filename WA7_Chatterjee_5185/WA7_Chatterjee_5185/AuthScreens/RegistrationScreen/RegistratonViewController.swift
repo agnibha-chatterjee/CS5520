@@ -12,13 +12,14 @@ class RegistratonViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     
+    override func loadView() {
+        self.view = registrationView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Register"
-        
-        self.view = registrationView
-    
     }
     
 }

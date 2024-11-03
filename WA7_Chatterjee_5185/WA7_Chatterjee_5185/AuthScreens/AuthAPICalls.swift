@@ -26,7 +26,7 @@ extension LoginViewController: AuthAPIProtocol {
                             let decoder = JSONDecoder()
                             do {
                                 let receivedData = try decoder.decode(LoginAPIResponse.self, from: data)
-                                self.defaults.set("accessToken", forKey: receivedData.token)
+                                self.defaults.set(receivedData.token, forKey: "accessToken")
                                 let notesViewController = NotesViewController()
                                 self.navigationController?.pushViewController(notesViewController, animated: true)
                             } catch {
@@ -49,7 +49,34 @@ extension LoginViewController: AuthAPIProtocol {
     }
     
     func getUserDetails(token: String) {
-         
+        if let url = URL(string: APIConfig.authAPIBaseURL + "me"){
+            AF.request(url, method: .get, headers: [
+                "x-access-token": token
+            ]).responseData(completionHandler: { response in
+                let status = response.response?.statusCode
+                switch response.result{
+                case .success:
+                    if let uwStatusCode = status{
+                        switch uwStatusCode{
+                        case 200...299:
+                            let notesViewController = NotesViewController()
+                            self.navigationController?.pushViewController(notesViewController, animated: true)
+                            break
+                        case 400...499:
+                            // not authenticated
+                            // don't do anything
+                            break
+                        default:
+                            break
+                        }
+                    }
+                    break
+                case .failure(let error):
+                    print(error)
+                    break
+                }
+            })
+        }
     }
 }
 

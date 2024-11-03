@@ -27,3 +27,10 @@ struct LoginAPIResponse: Codable {
     }
 }
 
+struct GetAllNotesResponse: Codable {
+    var notes: [Note]
+    
+    init(notes: [Note]) {
+        self.notes = notes
+    }
+}

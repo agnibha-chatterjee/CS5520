@@ -7,4 +7,5 @@
 
 class APIConfig{
     static let authAPIBaseURL = "http://apis.sakibnm.work:3000/api/auth/"
+    static let noteAPIBaseURL = "http://apis.sakibnm.work:3000/api/note/"
 }

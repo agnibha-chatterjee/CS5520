@@ -12,6 +12,10 @@ class LoginViewController: UIViewController {
     var loginView = LoginView()
     let defaults = UserDefaults.standard
     
+    override func loadView() {
+        self.view = loginView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,12 +24,7 @@ class LoginViewController: UIViewController {
         loginView.registerBtn.addTarget(self, action: #selector(onClickRegisterBtn), for: .touchUpInside)
         loginView.loginBtn.addTarget(self, action: #selector(onClickLoginBtn), for: .touchUpInside)
         
-        self.view = loginView
-        
-        if isUserAuthenticated() {
-            let notesViewController = NotesViewController()
-            self.navigationController?.pushViewController(notesViewController, animated: true)
-        }
+        checkIfUserIsAuthenticated()
     }
     
     @objc func onClickRegisterBtn() {
@@ -37,7 +36,7 @@ class LoginViewController: UIViewController {
         if !validateAllFields() {
             return
         }
-
+        
         let email = self.loginView.emailField.text!
         let password = self.loginView.passwordField.text!
         
@@ -79,16 +78,21 @@ class LoginViewController: UIViewController {
     }
     
     func showAlert(title: String = "Error", message: String) {
-       let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-       alert.addAction(UIAlertAction(title: "Dismiss", style: .default))
-       present(alert, animated: true)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default))
+        present(alert, animated: true)
     }
     
-    func isUserAuthenticated() -> Bool {
-        if let _ = UserDefaults.standard.string(forKey: "accessToken") {
-            return true
+    func checkIfUserIsAuthenticated() {
+        let savedAccessToken = defaults.string(forKey: "accessToken")
+        
+        if savedAccessToken == nil {
+            return
         }
         
-        return false
+        let accessToken: String = savedAccessToken!
+        
+        self.getUserDetails(token: accessToken)
+        
     }
 }
