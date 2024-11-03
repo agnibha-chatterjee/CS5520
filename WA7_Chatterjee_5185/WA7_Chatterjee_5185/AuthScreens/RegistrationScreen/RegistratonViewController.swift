@@ -10,13 +10,15 @@ import UIKit
 class RegistratonViewController: UIViewController {
     var registrationView = RegistrationView()
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Register"
         
         self.view = registrationView
-
+    
     }
     
 }

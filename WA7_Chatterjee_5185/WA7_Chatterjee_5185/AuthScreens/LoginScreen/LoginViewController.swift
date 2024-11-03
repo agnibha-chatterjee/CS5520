@@ -1,0 +1,94 @@
+//
+//  LoginViewController.swift
+//  WA7_Chatterjee_5185
+//
+//  Created by agni on 11/3/24.
+//
+
+import UIKit
+
+class LoginViewController: UIViewController {
+    
+    var loginView = LoginView()
+    let defaults = UserDefaults.standard
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.title = "Login"
+        
+        loginView.registerBtn.addTarget(self, action: #selector(onClickRegisterBtn), for: .touchUpInside)
+        loginView.loginBtn.addTarget(self, action: #selector(onClickLoginBtn), for: .touchUpInside)
+        
+        self.view = loginView
+        
+        if isUserAuthenticated() {
+            let notesViewController = NotesViewController()
+            self.navigationController?.pushViewController(notesViewController, animated: true)
+        }
+    }
+    
+    @objc func onClickRegisterBtn() {
+        let registraionViewController = RegistratonViewController()
+        self.navigationController?.pushViewController(registraionViewController, animated: true)
+    }
+    
+    @objc func onClickLoginBtn() {
+        if !validateAllFields() {
+            return
+        }
+
+        let email = self.loginView.emailField.text!
+        let password = self.loginView.passwordField.text!
+        
+        self.login(email: email, password: password)
+    }
+    
+    func validateEmptyFields() -> Bool {
+        if self.loginView.emailField.text?.isEmpty == true {
+            showAlert(message: "Email cannot be empty")
+            return false
+        } else if self.loginView.passwordField.text?.isEmpty == true {
+            showAlert(message: "Password cannot be empty")
+            return false
+        }
+        return true
+    }
+    
+    func validateEmail() -> Bool {
+        let email = self.loginView.emailField.text!
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        let isValidEmail = emailPred.evaluate(with: email)
+        
+        if !isValidEmail {
+            showAlert(message: "Email format is invalid")
+        }
+        
+        return isValidEmail
+    }
+    
+    func validateAllFields() -> Bool {
+        if !validateEmptyFields() {
+            return false
+        }
+        if !validateEmail() {
+            return false
+        }
+        return true
+    }
+    
+    func showAlert(title: String = "Error", message: String) {
+       let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+       alert.addAction(UIAlertAction(title: "Dismiss", style: .default))
+       present(alert, animated: true)
+    }
+    
+    func isUserAuthenticated() -> Bool {
+        if let _ = UserDefaults.standard.string(forKey: "accessToken") {
+            return true
+        }
+        
+        return false
+    }
+}

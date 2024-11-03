@@ -9,9 +9,14 @@ import UIKit
 
 class NotesViewController: UIViewController {
     
+    let notesView = NotesView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view = notesView
         
+        self.title = "All Notes"
+    
     }
 
 }
