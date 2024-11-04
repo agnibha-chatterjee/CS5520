@@ -12,14 +12,14 @@ class ProfileViewController: UIViewController {
     let profileView = ProfileView()
     let defaults = UserDefaults.standard
     
-    var loggedInUser: User? = nil
-    
     override func loadView() {
         self.view = profileView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Profile"
         
         self.profileView.logoutBtn.addTarget(self, action: #selector(onLogoutPress), for: .touchUpInside)
         

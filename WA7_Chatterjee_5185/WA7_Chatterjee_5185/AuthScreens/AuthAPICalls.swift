@@ -8,10 +8,10 @@
 import Alamofire
 
 extension LoginViewController: AuthAPIProtocol {
-    func logout() {
+    func register(name: String, email: String, password: String) {
     }
     
-    func register(_ newUser: User) {
+    func logout() {
     }
     
     func login(email: String, password: String) {
@@ -30,6 +30,7 @@ extension LoginViewController: AuthAPIProtocol {
                             do {
                                 let receivedData = try decoder.decode(LoginAPIResponse.self, from: data)
                                 self.defaults.set(receivedData.token, forKey: "accessToken")
+                                self.resetFields()
                                 let notesViewController = NotesViewController()
                                 self.navigationController?.pushViewController(notesViewController, animated: true)
                             } catch {
@@ -37,8 +38,10 @@ extension LoginViewController: AuthAPIProtocol {
                             }
                             break
                         case 400...499:
+                            self.showAlert(message: "Incorrect email/password")
                             break
                         default:
+                            self.showAlert(message: "Incorrect email/password")
                             break
                         }
                     }
@@ -63,6 +66,7 @@ extension LoginViewController: AuthAPIProtocol {
                         switch uwStatusCode{
                         case 200...299:
                             let notesViewController = NotesViewController()
+                            self.navigationItem.setHidesBackButton(true, animated: true)
                             self.navigationController?.pushViewController(notesViewController, animated: true)
                             break
                         case 400...499:
@@ -87,12 +91,12 @@ extension RegistratonViewController: AuthAPIProtocol {
     func logout() {
     }
     
-    func register(_ newUser: User) {
+    func register(name: String, email: String, password: String) {
         if let url = URL(string: APIConfig.authAPIBaseURL + "register"){
             AF.request(url, method: .post, parameters: [
-                "name": newUser.name,
-                "email": newUser.email,
-//                "password": newUser.password,
+                "name": name,
+                "email": email,
+                "password": password,
             ]).responseData(completionHandler: { response in
                 let status = response.response?.statusCode
                 switch response.result{
@@ -103,7 +107,8 @@ extension RegistratonViewController: AuthAPIProtocol {
                             let decoder = JSONDecoder()
                             do {
                                 let receivedData = try decoder.decode(RegisterAPIResponse.self, from: data)
-                                self.defaults.set("accessToken", forKey: receivedData.token)
+                                self.defaults.set(receivedData.token, forKey: "accessToken")
+                                self.resetFields()
                                 let notesViewController = NotesViewController()
                                 self.navigationController?.pushViewController(notesViewController, animated: true)
                             } catch {
@@ -111,8 +116,10 @@ extension RegistratonViewController: AuthAPIProtocol {
                             }
                             break
                         case 400...499:
+                            self.showAlert(message: "User already exists!")
                             break
                         default:
+                            self.showAlert(message: "User already exists!")
                             break
                         }
                     }

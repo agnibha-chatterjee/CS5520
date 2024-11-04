@@ -20,6 +20,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Login"
+        self.navigationItem.backButtonTitle = ""
         
         loginView.registerBtn.addTarget(self, action: #selector(onClickRegisterBtn), for: .touchUpInside)
         loginView.loginBtn.addTarget(self, action: #selector(onClickLoginBtn), for: .touchUpInside)
@@ -30,6 +31,11 @@ class LoginViewController: UIViewController {
     @objc func onClickRegisterBtn() {
         let registraionViewController = RegistratonViewController()
         self.navigationController?.pushViewController(registraionViewController, animated: true)
+    }
+    
+    func resetFields() {
+        self.loginView.emailField.text = ""
+        self.loginView.passwordField.text = ""
     }
     
     @objc func onClickLoginBtn() {
@@ -93,6 +99,5 @@ class LoginViewController: UIViewController {
         let accessToken: String = savedAccessToken!
         
         self.getUserDetails(token: accessToken)
-        
     }
 }

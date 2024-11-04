@@ -10,7 +10,7 @@ import UIKit
 class NotesView: UIView {
     var tableNotes: UITableView!
     var bottomAddView:UIView!
-    var newNoteTextField:UITextField!
+    var newNoteTextField:UITextView!
     var buttonAdd:UIButton!
     
     override init(frame: CGRect) {
@@ -46,9 +46,13 @@ class NotesView: UIView {
     }
     
     func setupTextFieldAddPhone(){
-        newNoteTextField = UITextField()
-        newNoteTextField.placeholder = "Type note here..."
-        newNoteTextField.borderStyle = .roundedRect
+        newNoteTextField = UITextView()
+        newNoteTextField.text = "Type note here..."
+        newNoteTextField.textColor = .black
+        newNoteTextField.layer.borderWidth = 1.0
+        newNoteTextField.layer.borderColor = UIColor.systemGray4.cgColor
+        newNoteTextField.layer.cornerRadius = 8
+        newNoteTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
         newNoteTextField.translatesAutoresizingMaskIntoConstraints = false
         bottomAddView.addSubview(newNoteTextField)
     }

@@ -8,6 +8,9 @@
 import Alamofire
 
 extension ProfileViewController: AuthAPIProtocol {
+    func register(name: String, email: String, password: String) {
+    }
+    
     func logout() {
         if let url = URL(string: APIConfig.authAPIBaseURL + "logout"){
             AF.request(url, method: .get).responseData(completionHandler: { response in
@@ -37,9 +40,6 @@ extension ProfileViewController: AuthAPIProtocol {
         }
     }
     
-    func register(_ newUser: User) {
-    }
-    
     func login(email: String, password: String) {
     }
     
@@ -57,7 +57,6 @@ extension ProfileViewController: AuthAPIProtocol {
                             let decoder = JSONDecoder()
                             do {
                                 let userDetails = try decoder.decode(User.self, from: data)
-                                self.loggedInUser = userDetails
                                 self.displayProfileData(user: userDetails)
                             } catch {
                                 
