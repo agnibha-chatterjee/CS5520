@@ -38,10 +38,18 @@ extension LoginViewController: AuthAPIProtocol {
                             }
                             break
                         case 400...499:
-                            self.showAlert(message: "Incorrect email/password")
+                            let decoder = JSONDecoder()
+                            do {
+                                let receivedData = try decoder.decode(LoginAPIResponse.self, from: data)
+                                if !receivedData.auth && receivedData.token == nil {
+                                    self.showAlert(message: "Incorrect password!")
+                                }
+                            } catch {
+                                self.showAlert(message: "User with email \(email) not found")
+                            }
                             break
                         default:
-                            self.showAlert(message: "Incorrect email/password")
+                            self.showAlert(message: "Invalid email/password")
                             break
                         }
                     }

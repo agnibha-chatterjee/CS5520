@@ -19,9 +19,9 @@ struct RegisterAPIResponse: Codable {
 
 struct LoginAPIResponse: Codable {
     var auth: Bool
-    var token: String
+    var token: String?
     
-    init(auth: Bool, token: String) {
+    init(auth: Bool, token: String?) {
         self.auth = auth
         self.token = token
     }
