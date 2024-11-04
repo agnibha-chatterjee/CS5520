@@ -6,7 +6,7 @@
 //
 
 protocol NoteAPIProtocol {
-    func getAllNotes(token: String)
-    func addNote()
-    func deleteNote()
+    func getAllNotes()
+    func addNote(newNoteText: String)
+    func deleteNote(noteId: String)
 }

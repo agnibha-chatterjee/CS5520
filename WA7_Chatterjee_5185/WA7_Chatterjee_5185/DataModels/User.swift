@@ -10,13 +10,11 @@ struct User: Codable {
     let __v: Int
     let name: String
     let email: String
-    let password: String?
     
-    init(_id: String, __v: Int, name: String, email: String, password: String? = nil) {
+    init(_id: String, __v: Int, name: String, email: String) {
         self._id = _id
         self.__v = __v
         self.name = name
         self.email = email
-        self.password = password
     }
 }

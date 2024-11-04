@@ -10,6 +10,7 @@ import Foundation
 protocol AuthAPIProtocol{
     func register(_ newUser: User)
     func login(email: String, password: String)
+    func logout()
     func getUserDetails(token: String)
 }
 

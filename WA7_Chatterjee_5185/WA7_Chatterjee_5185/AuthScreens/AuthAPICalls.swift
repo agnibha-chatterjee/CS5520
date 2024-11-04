@@ -8,6 +8,9 @@
 import Alamofire
 
 extension LoginViewController: AuthAPIProtocol {
+    func logout() {
+    }
+    
     func register(_ newUser: User) {
     }
     
@@ -81,12 +84,15 @@ extension LoginViewController: AuthAPIProtocol {
 }
 
 extension RegistratonViewController: AuthAPIProtocol {
+    func logout() {
+    }
+    
     func register(_ newUser: User) {
         if let url = URL(string: APIConfig.authAPIBaseURL + "register"){
             AF.request(url, method: .post, parameters: [
                 "name": newUser.name,
                 "email": newUser.email,
-                "password": newUser.password,
+//                "password": newUser.password,
             ]).responseData(completionHandler: { response in
                 let status = response.response?.statusCode
                 switch response.result{
@@ -130,18 +136,12 @@ extension RegistratonViewController: AuthAPIProtocol {
             ]).responseData(completionHandler: { response in
                 let status = response.response?.statusCode
                 switch response.result{
-                case .success(let data):
+                case .success:
                     if let uwStatusCode = status{
                         switch uwStatusCode{
                         case 200...299:
-                            let decoder = JSONDecoder()
-                            do {
-                                let receivedData = try decoder.decode(User.self, from: data)
-                                let notesViewController = NotesViewController()
-                                self.navigationController?.pushViewController(notesViewController, animated: true)
-                            } catch {
-                                print("error decoding response")
-                            }
+                            let notesViewController = NotesViewController()
+                            self.navigationController?.pushViewController(notesViewController, animated: true)
                             break
                         case 400...499:
                             // unauth
